@@ -2,7 +2,7 @@ export function Menu() {
   return (
     <div className="flex gap-[56px]">
       <div className="flex flex-col gap-4">
-        <h2 className="text-4 font-normal leading-7 text-[#71717A]">NOMNOM </h2>
+        <h2 className="text-4 font-normal leading-7 text-[#71717A]">MENU </h2>
         <p className="text-4 font-normal leading-6 text-[#FAFAFA]">
           Appetizers{" "}
         </p>
