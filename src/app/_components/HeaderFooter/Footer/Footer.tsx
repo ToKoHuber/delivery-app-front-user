@@ -4,7 +4,7 @@ import { FooterTop } from "./FooterTop";
 
 export function Footer() {
   return (
-    <div className="w-full bg-black pt-[60px] pb-[111px]">
+    <div className="w-full bg-[#18181B] pt-[60px] pb-[111px]">
       <FooterTop />
       <FooterMiddle />
       <FooterBottom />
