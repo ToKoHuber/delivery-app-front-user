@@ -1,4 +1,5 @@
-import { Copy, Minus, Pencil, Plus } from "lucide-react";
+"use client";
+import { Minus, Pencil, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +13,31 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import { useState } from "react";
 
 export function AddFoodCard({ food }) {
+  const [totalCount, setTotalCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(food.price);
+
+  function AddButton() {
+    setTotalCount((prevCount) => {
+      const newCount = prevCount + 1;
+      setTotalPrice(newCount * food.price);
+      return newCount;
+    });
+  }
+
+  function MinusButton() {
+    setTotalCount((prevCount) => {
+      if (prevCount > 1) {
+        const newCount = prevCount - 1;
+        setTotalPrice(newCount * food.price);
+        return newCount;
+      }
+      return prevCount;
+    });
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -48,15 +72,23 @@ export function AddFoodCard({ food }) {
               <div>
                 <p>Total Price</p>
                 <p className="text-[#09090B] text-[18px] font-semibold leading-7">
-                  {food.price} ₮
+                  {totalPrice.toLocaleString()} ₮
                 </p>
               </div>
               <div className="flex gap-3 w-[121px] items-center">
-                <Button variant="outline" className="size-[44px] rounded-full">
+                <Button
+                  variant="outline"
+                  className="size-[44px] rounded-full"
+                  onClick={MinusButton}
+                >
                   <Minus />
                 </Button>
-                <p>1</p>
-                <Button variant="outline" className="size-[44px] rounded-full">
+                <p>{totalCount}</p>
+                <Button
+                  variant="outline"
+                  className="size-[44px] rounded-full"
+                  onClick={AddButton}
+                >
                   <Plus />
                 </Button>
               </div>
