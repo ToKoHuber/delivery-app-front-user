@@ -11,6 +11,7 @@ export function Categories({ categories }) {
           return (
             <ToggleGroupItem
               value={category.categoryName}
+              key={categories.categoryName}
               className="text-[#18181B] text-[18px] font-normal leading-7 bg-[#FFFFFF] py-[4px] px-[20px] rounded-full data-[state=on]:text-[#FAFAFA] data-[state=on]:bg-[#EF4444]"
             >
               {category.categoryName}

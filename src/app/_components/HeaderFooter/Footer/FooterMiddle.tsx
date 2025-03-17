@@ -5,8 +5,8 @@ import { NOMNOM } from "./FooterMiddleLink/NOMNOM";
 
 export function FooterMiddle() {
   return (
-    <div className=" mt-[76px] mx-[88px]">
-      <div className="flex gap-[220px]">
+    <div className=" mt-[76px] mx-[88px] w-[1264px]">
+      <div className="flex  gap-[220px]">
         <LogoVertical />
         <div className="flex gap-[112px]">
           <NOMNOM />
