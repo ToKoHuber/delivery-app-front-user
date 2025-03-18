@@ -67,7 +67,10 @@ export function LoginForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-6"
       >
-        <ChevronLeft className="size-[36px] py-[2px] px-[4px] border-[1px] rounded-[6px] border-[#E4E4E7]" />
+        <ChevronLeft
+          className="size-[36px] py-[2px] px-[4px] border-[1px] rounded-[6px] border-[#E4E4E7]"
+          onClick={() => router.push("/")}
+        />
         <FormField
           control={form.control}
           name="email"
