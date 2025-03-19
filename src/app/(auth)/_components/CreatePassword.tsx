@@ -146,6 +146,15 @@ export default function CreatePass({
         <Button type="submit" className="w-full">
           Let's go
         </Button>
+        <p className="text-[#71717A] text-4 font-normal leading-6">
+          Already have an account?{" "}
+          <span
+            className="text-[#2563EB] text-4 font-normal leading-6 cursor-pointer"
+            onClick={() => router.push("/logIn")}
+          >
+            Log in
+          </span>
+        </p>
       </form>
     </Form>
   );

@@ -133,6 +133,15 @@ export function LoginForm() {
           )}
         </button>
         <Button type="submit">Log In</Button>
+        <p className="text-[#71717A] text-4 font-normal leading-6">
+          Don’t have an account?{" "}
+          <span
+            className="text-[#2563EB] text-4 font-normal leading-6 cursor-pointer"
+            onClick={() => router.push("/signUp")}
+          >
+            Sign up
+          </span>
+        </p>
       </form>
     </Form>
   );
