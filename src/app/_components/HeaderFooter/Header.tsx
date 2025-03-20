@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { LogoHorizon } from "../logos/LogoHorizon";
+import { SheetBasket } from "../sheet/Sheet";
 
 export function Header() {
   const router = useRouter();
-  function SignUp() {}
 
   return (
     <div className="flex justify-center items-center w-full bg-[#18181B] px-[88px] py-3 top-5 left-5 right-5 bottom-[232px]">
@@ -27,6 +27,7 @@ export function Header() {
           >
             Sign in
           </Button>
+          <SheetBasket />
         </div>
       </div>
     </div>
