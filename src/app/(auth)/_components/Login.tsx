@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { ChevronLeft, Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -32,18 +33,30 @@ const formSchema = z.object({
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const userSignIn = async (values: z.infer<typeof formSchema>) => {
-    const data = await fetch("http://localhost:4000/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: values.email,
-        password: values.password,
-      }),
-    });
-    const jsonData = await data.json();
+    try {
+      const data = await fetch("http://localhost:4000/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      });
+
+      const jsonData = await data.json();
+      console.log(jsonData);
+      toast(jsonData.message);
+      if (!data.ok) {
+        throw new Error("Failed to sign in");
+      }
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,9 +67,8 @@ export function LoginForm() {
     },
   });
 
-  const router = useRouter();
   function onSubmit(values: z.infer<typeof formSchema>) {
-    router.push("http://localhost:3000");
+    userSignIn(values);
     console.log(values);
   }
   // ...
